@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSRS Ironman Progress Ideas</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 200px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            cursor: pointer;
+            border-radius: 15px; /* Adjust the border-radius for rounded edges */
+        }
+
+        .card-front,
+        .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 15px; /* Adjust the border-radius for rounded edges */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add a subtle shadow for depth */
+        }
+
+        .card-front {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .card-back {
+            background-color: #2ecc71;
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+
+        .flipped {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container" onclick="flipCard()">
+    <div class="card first-card">
+        <div class="card-front">Click to reveal</div>
+        <div class="card-back"></div>
+    </div>
+</div>
+
+<script>
+    const ideas = [
+        "Questing Marathon",
+        "Resource Gathering",
+        "Combat Training",
+        "Skilling Grind",
+        "Unique Achievement Hunt",
+        "Boss Encounter",
+        "Treasure Trails Hunt",
+        "Mini-game Mastery",
+        "Clue Scroll Challenge",
+        "Ironman Group Activity",
+        "Pet Collection",
+        "Money-Making Method",
+        "Crafting Focus",
+        "Achievement Diary Completion",
+        "PvP Adventure"
+    ];
+
+    let currentCard = 0;
+
+    function flipCard() {
+        const card = document.querySelector('.card');
+        const cardFront = document.querySelector('.card-front');
+        const cardBack = document.querySelector('.card-back');
+
+        if (currentCard < ideas.length) {
+            cardFront.textContent = "Idea: " + ideas[currentCard];
+            cardBack.textContent = "Idea: " + ideas[currentCard];
+            currentCard++;
+        } else {
+            cardFront.textContent = "No more ideas!";
+            cardBack.textContent = "No more ideas!";
+        }
+
+        card.classList.toggle('flipped');
+    }
+</script>
+</body>
+</html>
